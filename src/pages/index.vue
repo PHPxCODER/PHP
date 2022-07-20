@@ -7,7 +7,7 @@
 <script>
 export default {
   head: {
-    title: 'Home',
+    title: 'Welcome',
   },
 }
 </script>

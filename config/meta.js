@@ -1,9 +1,9 @@
 const description =
-  "My name is Mehmet Ali. I'm full stack developer and student from Turkey. Visit website and learn more about me."
+  "My name is PHP. I'm full stack developer and student from India. Visit website and learn more about me."
 
   export default {
-    title: "Mehmetali345Dev",
-    titleTemplate: "%s - Mehmetali345Dev",
+    title: "PHP",
+    titleTemplate: "%s",
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
