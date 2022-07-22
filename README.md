@@ -1,5 +1,5 @@
 # 345dev.me
-![Preview](https://raw.githubusercontent.com/Mehmetali345Dev/website/master/preview.png)
+
 
 [![CodeFactor](https://www.codefactor.io/repository/github/mehmetali345dev/website/badge)](https://www.codefactor.io/repository/github/mehmetali345dev/website)
 
