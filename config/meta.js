@@ -21,17 +21,17 @@ const description =
       {
         hid: 'twitter:site',
         name: 'twitter:site',
-        content: '@AnakinS07677978',
+        content: '@PHPxCODER',
       },
       {
         hid: 'twitter:creator',
         name: 'twitter:creator',
-        content: '@AnakinS07677978',
+        content: '@PHPxCODER',
       },
       {
         hid: 'twitter:title',
         name: 'twitter:title',
-        content: '345dev.me',
+        content: 'php.codevizag.com',
       },
       {
         hid: 'twitter:description',
@@ -41,13 +41,13 @@ const description =
       {
         hid: 'twitter:image',
         name: 'twitter:image',
-        content: '/icon.png',
+        content: '/php.png',
       },
       /* Open-Graph */
       {
         hid: 'og:title',
         name: 'og:title',
-        content: 'Mehmetali345Dev',
+        content: 'PHP',
       },
       {
         hid: 'og:type',
@@ -57,7 +57,7 @@ const description =
       {
         hid: 'og:site_name',
         name: 'og:site_name',
-        content: '345dev.me',
+        content: 'php.codevizag.com',
       },
       {
         hid: 'og:description',
@@ -67,7 +67,7 @@ const description =
       {
         hid: 'og:image',
         name: 'og:image',
-        content: 'https://345dev.me/banners/banner.png',
+        content: '/php.png',
       },
       /* Others */
       {

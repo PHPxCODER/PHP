@@ -4,7 +4,7 @@
       class="md:w-9/12 flex flex-col md:flex-row justify-between items-start gap-2 md:items-center"
     >
       <a
-        href="https://github.com/PHPxCODER/"
+        href="https://github.com/PHPxCODER/PHP"
         class="font-bold text-xl"
         target="_blank"
         rel="noreferrer noopener"
