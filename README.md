@@ -8,7 +8,7 @@ My Personal Portfolio & Blog Made in ♥ with Nuxt.js, Vue.js, WindiCSS.
 
 # What it Has ?
 
-- Realtime Discord & Spotify Status!
+- Realtime Discord & Spotify Status! (Using [Lanyard](https://github.com/Phineas/lanyard) Which Uses Realtime Socket)
 - Page for Freelancers
     - Works, Projects and Repos!
 - Most of styling job is made with WindiCSS
