@@ -69,13 +69,11 @@ export default {
       socket: null,
     }
   },
-
   computed: {
     /**
      * Returns status detail as string.
      * @returns {string}
      */
-
     getStatusDetails() {
       const lanyard = this.lanyard
       const filtered =
@@ -100,7 +98,6 @@ export default {
     },
     getStatusImage() {
       const lanyard = this.lanyard
-
       const filtered =
         lanyard.activities?.filter((activity) => activity.type === 0)?.pop() ||
         {}
