@@ -21,9 +21,9 @@
           :src="`https://cdn.discordapp.com/avatars/697757845063729194/${this.lanyard.discord_user.avatar}`"
           class="w-9 h-9 rounded-full"
           alt
-          v-tooltip="'Its me PHP'"
+          v-tooltip="'Profile Pic'"
         />
-        <div :class="`h-3 w-3 rounded-full flex-shrink-0 ${getDiscordStatus}`" />
+        <div :class="`h-3 w-3 rounded-full flex-shrink-0 ${getDiscordStatus}`" v-tooltip="`${this.lanyard.discord_status}`"/>
         <h1 class="font-bold truncate">
           {{
             this.lanyard.discord_user.username +
