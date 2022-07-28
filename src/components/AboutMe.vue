@@ -4,7 +4,7 @@
       <div class="grid items-center about mt-2">
         <h1 class="font-bold text-2xl text-2xl">Hello, I'm PHP</h1>
         <p>
-        PHP a {{ calculateAge }} Years Old Self-Taught Student from India, 
+        PHP a <span v-tooltip="`${calculateAgeDecimals}`">{{ calculateAge }}</span> Years Old Self-Taught Student from India, 
         Who's Currently Learning Backend Web Development To Create Stunning User Experiences on the Front-End, Scalable and Secure Infrastructure.
 
 
@@ -65,6 +65,12 @@
           let difference = currentDate - birthDate;
           let age = Math.floor(difference/31557600000);
           return age
+        },
+        calculateAgeDecimals: function(){
+          let currentDate = new Date();
+          let birthDate = new Date("2004/07/21");
+          let difference = currentDate - birthDate;
+          return difference/31557600000;
         }
       }
     }
