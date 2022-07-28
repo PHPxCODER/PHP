@@ -5,8 +5,9 @@
       !getStatusDetails ||
       Object.keys(lanyard).length === 0
     "
-    class="bg-green-500 w-full h-full flex items-center animate-pulse p-4 rounded-md"
+    class="bg-green-500 dark:bg-green-600 w-full h-full flex items-center animate-pulse p-4 rounded-md"
   >
+
     <div class="w-16 h-16 rounded-md mr-4 bg-gray-900 outline-none" />
     <div class="flex flex-col justify-center space-y-3">
       <h1 class="h-4 w-16 bg-gray-900"></h1>
@@ -18,11 +19,11 @@
             lanyard.activities.filter((activity) => activity.type === 2)
           ).length !== 0" class="h-full w-full">
     <div
-      class="bg-green-500 dark:bg-green-500 h-full bg-opacity-30 flex p-4 items-center rounded-md"
+      class="bg-green-500 dark:bg-green-600 h-full bg-opacity-30 flex p-4 items-center rounded-md""
     >
       <a
-        
-        title="View song on LastFM"
+        :href="getStatusLink"
+        title="View Song on Spotify"
         target="_blank"
         class="h-full items-center flex"
       >
@@ -90,14 +91,26 @@ export default {
      
      else if (filtered.name === "Spotify" && !!lanyard.spotify) {
       const { song, artist } = lanyard.spotify || {}
-      const firstArtist = artist?.replace(";", ",")
+      const firstArtist = artist?.replaceAll(";", ",")
       //const newstr = str.replace(";", ","); 
         
       return `${firstArtist || "someone"}`
         
       }
     },
-
+    getStatusLink() {
+      const lanyard = this.lanyard
+      const filtered =
+        lanyard.activities?.filter((activity) => activity.type === 2)?.pop() ||
+        null
+     if (this.lanyard?.discord_status === "offline") return "Offline"
+     else if (!filtered) return "Online"
+     
+     else if (filtered.name === "Spotify" && !!lanyard.spotify) {
+      return `https://open.spotify.com/track/${filtered.sync_id}?si=d4270c86c37947d7`
+        
+      }
+    },
     getDiscordStatus() {
       switch (this.lanyard.discord_status) {
         case 'online':
@@ -118,7 +131,7 @@ export default {
      if (filtered.assets == null) {
         return '/php.png'
       } else {
-        return `https://i.scdn.co/image/${filtered.assets.large_image.substring(8)}`
+        return `${this.lanyard.spotify.album_art_url}`
       }
     },
   },

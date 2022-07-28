@@ -15,7 +15,7 @@
   </div>
 
   <div v-else class="w-full h-full">
-    <div class="bg-gray-900 bg-opacity-30 h-full flex flex-col justify-center gap-2 p-4 rounded-md">
+    <div class="bg-gray-700 bg-opacity-30 h-full flex flex-col justify-center gap-2 p-4 rounded-md">
       <div class="flex space-x-2 items-center">
         <img
           :src="`https://cdn.discordapp.com/avatars/697757845063729194/${this.lanyard.discord_user.avatar}`"
