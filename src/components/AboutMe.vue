@@ -73,7 +73,7 @@
         calculateAgeDecimals: function(){
           let a = this;
           setInterval(function(){
-          a.age = (new Date() - new Date("2004/07/21))/(31557600000);
+          a.age = (new Date() - new Date("2004/07/21"))/(31557600000)
           }, 500)
           return a.age;
         }, 
