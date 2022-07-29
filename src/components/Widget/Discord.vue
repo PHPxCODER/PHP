@@ -101,8 +101,8 @@ export default {
       const filtered =
         lanyard.activities?.filter((activity) => activity.type === 0)?.pop() ||
         {}
-      if (filtered.name == 'Stardew Valley') {
-        return 'https://play-lh.googleusercontent.com/He92papZcOmkgTi1sLHXQQb02aoyRtJ8ml96njM_cSAcpHhILvxMjhLix4mYEIKXPq4'
+      if (filtered.name == 'Valorant') {
+        return 'https://cdn.discordapp.com/app-icons/700136079562375258/e55fc8259df1548328f977d302779ab7.webp'
       } else if (filtered.assets == null) {
         return '/icon.png'
       } else {
