@@ -101,10 +101,45 @@ export default {
       const filtered =
         lanyard.activities?.filter((activity) => activity.type === 0)?.pop() ||
         {}
+      // Valorant
       if (filtered.name == 'VALORANT') {
         return 'https://cdn.discordapp.com/app-icons/700136079562375258/e55fc8259df1548328f977d302779ab7.webp'
-      } else if (filtered.assets == null) {
-        return '/icon.png'
+      }
+      // GTA 5
+      if (filtered.name === "Grand Theft Auto V") {
+        return `https://cdn.discordapp.com/app-icons/356876176465199104/069d9f4871b5ebd2f62bd342ce6ba77f.webp`
+      }
+      //PUBG PC
+      if (filtered.name === "PUBG") {
+        return `https://cdn.discordapp.com/app-icons/356873622985506820/d8cd6c5b1fe5b64ad2e0f660238eb43e.webp`
+      }
+      //PUBG PC LITE
+      if (filtered.name === "PUBG LITE") {
+        return `https://cdn.discordapp.com/app-icons/597588168178663434/8ecc61c6b6ddbb017fe82342192054c0.webp`
+      }
+      // CS:GO
+      if (filtered.name === "Counter-Strike: Global Offensive") {
+        return `https://cdn.discordapp.com/app-icons/356875057940791296/782a3bb612c6f1b3f7deed554935f361.webp`
+      }
+      // FORTNITE
+      if (filtered.name === "FORTNITE") {
+        return `https://cdn.discordapp.com/app-icons/432980957394370572/09120a438d2c5429242f0f0ab862fb28.webp`
+      }
+      // The Sims 4
+      if (filtered.name === "The Sims 4") {
+        return `https://cdn.discordapp.com/app-icons/359509007423242240/912bd1dd19dfd2ef3b0191985f942a40.webp`
+      }
+      // YouTube
+      if (filtered.name === "YouTube") {
+        return `https://cdn.discordapp.com/app-assets/463097721130188830/513734690272968717.webp`
+      } 
+      // YouTube Music
+      if (filtered.name === "YouTube Music" && filtered.assets) {
+        return `https://media.discordapp.net/external/${filtered.assets.large_image.substring(12)}`
+      }
+      // Null Value
+        else if (filtered.assets == null) {
+         return '/php.png'
       } else {
         return `https://cdn.discordapp.com/app-assets/${filtered.application_id}/${filtered.assets.large_image}`
       }
