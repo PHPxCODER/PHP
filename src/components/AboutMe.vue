@@ -55,9 +55,12 @@
         'Github',
         'Figma',
         'React',
-      ],
+      ], 
+      age: (new Date() - new Date("2004/04/30"))/(31557600000)
     }
   },
+  //...
+
       computed:{
         calculateAge: function() {
           let currentDate = new Date();
@@ -66,14 +69,14 @@
           let age = Math.floor(difference/31557600000);
           return age
         },
+       
         calculateAgeDecimals: function(){
-          let currentDate = new Date();
-          let birthDate = new Date("2004/07/21");
-          let difference = currentDate - birthDate;
-          return difference/31557600000;
-        }
+          let a = this;
+          setInterval(function(){
+          a.age = (new Date() - new Date("2004/07/21))/(31557600000)
+          }, 500)
+          return a.age;
+        }, 
       }
     }
 </script>
-
-<style></style>
