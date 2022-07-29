@@ -56,7 +56,7 @@
         'Figma',
         'React',
       ], 
-      age: (new Date() - new Date("2004/04/30"))/(31557600000)
+      age: (new Date() - new Date("2004/07/21"))/(31557600000)
     }
   },
   //...
