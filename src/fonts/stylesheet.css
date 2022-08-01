@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'Bauhaus Std';
+    src: url('BauhausStd-Medium.eot');
+    src: local('Bauhaus Std Medium'), local('BauhausStd-Medium'),
+        url('BauhausStd-Medium.eot?#iefix') format('embedded-opentype'),
+        url('BauhausStd-Medium.woff2') format('woff2'),
+        url('BauhausStd-Medium.woff') format('woff'),
+        url('BauhausStd-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+

@@ -1,9 +1,11 @@
 @import 'transitions';
 @import 'scrollbar';
 @import 'disqus';
+@import url(../static/fonts/stylesheet.css);
 
 html {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "Bauhaus Std";
+  font-weight: 500;
   font-display: swap;
   scroll-behavior: smooth;
 }
