@@ -77,6 +77,7 @@
       <div
         class="flex flex-col p-4 w-full dark:bg-gray-900 bg-opacity-30 rounded-md gap-3"
       >
+      
         <h1 class="flex gap-3 font-bold text-lg">
           Artist:
           <h1 class="w-full h-6 rounded-sm bg-gray-800 bg-opacity-40"></h1>

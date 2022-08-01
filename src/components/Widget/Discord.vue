@@ -7,10 +7,11 @@
     "
     class="bg-gray-900 bg-opacity-30 w-full flex animate-pulse p-4 rounded-md"
   >
-    <div class="w-16 h-16 rounded-md mr-4 bg-gray-900 outline-none" /> 
+    <div class="w-16 h-16 rounded-md mr-4 bg-gray-800 outline-none" /> 
     <div class="flex flex-col justify-center space-y-3">
-      <h1 class="h-4 w-16 bg-gray-900"></h1>
-      <h1 class="h-4 w-28 bg-gray-900"></h1>
+      <h1 class="h-4 w-16 bg-gray-800"></h1>
+      <h1 class="h-4 w-28 bg-gray-800"></h1>
+      <h1 class="h-4 w-28 bg-gray-800"></h1>
     </div>
   </div>
 
@@ -42,7 +43,7 @@
         class="flex gap-2"
       >
         <img
-          class="w-16 h-16 relative rounded-md md:flex hidden bg-gray-900 outline-none"
+          class="w-16 h-16 relative rounded-md md:flex hidden bg-gray-700 outline-none"
           alt
           :src="getStatusImage"
         />
@@ -54,7 +55,7 @@
         </div>
       </div>
       <div v-else>
-        <h1 class="font-bold text-sm leading-tight truncate">I'm not doing anything</h1>
+        <h1 class="font-bold text-sm leading-tight truncate">I'm not Doing Anything</h1>
       </div>
     </div>
   </div>
@@ -136,6 +137,14 @@ export default {
       // YouTube Music
       if (filtered.name === "YouTube Music" && filtered.assets) {
         return `https://media.discordapp.net/external/${filtered.assets.large_image.substring(12)}`
+      }
+      // Prime Video
+      if (filtered.name === "Prime Video") {
+        return `https://cdn.discordapp.com/app-assets/705139844883677224/705140011946737806.webp`
+      }
+      // Netflix
+      if (filtered.name === "Netflix") {
+        return `https://i.imgur.com/LyG9Afx.png`
       }
       // Null Value
         else if (filtered.assets == null) {

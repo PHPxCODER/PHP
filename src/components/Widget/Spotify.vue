@@ -9,9 +9,11 @@
   >
 
     <div class="w-16 h-16 rounded-md mr-4 bg-gray-900 outline-none" />
-    <div class="flex flex-col justify-center space-y-3">
-      <h1 class="h-4 w-16 bg-gray-900"></h1>
-      <h1 class="h-4 w-28 bg-gray-900"></h1>
+    <div class="flex flex-col justify-center space-y-2">
+      <h1 class="h-4 w-25 bg-gray-900"></h1>
+      <h1 class="h-4 w-35 bg-gray-900"></h1>
+      <h1 class="h-4 w-50 bg-gray-900"></h1>
+      <h1 class="h-4 w-40 bg-gray-900"></h1>
     </div>
   </div>
 
@@ -19,7 +21,7 @@
             lanyard.activities.filter((activity) => activity.type === 2)
           ).length !== 0" class="h-full w-full">
     <div
-      class="bg-green-500 dark:bg-green-600 h-full bg-opacity-30 flex p-4 items-center rounded-md""
+      class="bg-green-500 dark:bg-green-600 h-full bg-opacity-30 flex p-4 items-center rounded-md"
     >
       <a
         :href="getStatusLink"
@@ -42,19 +44,24 @@
           <div class="text-sm leading-tight truncate-ellipsis">
             {{ 'From ' + getStatusDetails.assets.large_text }}
           </div>
+          <div class="text-sm leading-tight truncate-ellipsis">
+            {{ 'Elapsed: ' + getCurrentTimestamp + '/' + getEndTimestamp }}
+          </div>
         </div>
       </a>
     </div>
   </div>
   <div
     v-else
-    class="w-full bg-gray-900 bg-opacity-30 items-center flex p-4 rounded-md"
+    class="w-full bg-gray-700 bg-opacity-30 items-center flex p-4 rounded-md"
   >
     <h1 class="font-bold text-xl">PHP isn't Listening !</h1>
   </div>
 </template>
 
 <script>
+import { functionTypeAnnotation } from '@babel/types'
+// import {useTimestamp} from 'vue'
 
 export default {
   data() {
@@ -111,6 +118,31 @@ export default {
         
       }
     },
+    getCurrentTimestamp()  {
+      const lanyard = this.lanyard
+      const filtered = lanyard.activities?.filter((activity) => activity.type === 2)?.pop() ||
+      null
+      if (this.lanyard?.discord_status === "offline") return "Offline"
+      else if (!filtered) return "Online"
+      else if (filtered.name === "Spotify" && !!lanyard.spotify) {
+        let min = Math.floor((new Date()-filtered.timestamps.start)/60000)
+        let secs = Math.floor((new Date()-filtered.timestamps.start)/1000 - 60*min)
+        return min + ":" + (secs < 10 ? "0" : "") + secs;
+     }
+    },
+
+    getEndTimestamp(){
+      const lanyard = this.lanyard
+      const filtered = lanyard.activities?.filter((activity) => activity.type === 2)?.pop() ||
+      null
+      if (this.lanyard?.discord_status === "offline") return "Offline"
+      else if (!filtered) return "Online"
+      else if (filtered.name === "Spotify" && !!lanyard.spotify) {
+      let minute = Math.floor((filtered.timestamps.end-filtered.timestamps.start)/60000)
+      let seconds = Math.floor(((filtered.timestamps.end-filtered.timestamps.start)/1000)-minute*60) 
+      return minute + ":" + (seconds < 10 ? "0" : "") + seconds;
+      }
+    },
     getDiscordStatus() {
       switch (this.lanyard.discord_status) {
         case 'online':
@@ -138,7 +170,9 @@ export default {
   beforeDestroy() {
     this.socket?.close()
   },
+
   mounted() {
+    
     /**
      * Connect to Lanyard Socket API, send heartbeat every 30 seconds and replace the Vue data value with the message
      */
@@ -168,7 +202,11 @@ export default {
         this.lanyard = status || {}
       this.finished = true
     })
+        //this.test()
+       // setInterval(this.test,1000);
+      
   },
+  
 }
 </script>
 <style></style>

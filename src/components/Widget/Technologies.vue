@@ -33,6 +33,7 @@ export default {
         'Dotnet',
         'Github',
         'Figma',
+        'React',
       ],
     }
   },
