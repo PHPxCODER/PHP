@@ -45,7 +45,7 @@
             {{ 'From ' + getStatusDetails.assets.large_text }}
           </div>
           <div class="text-sm leading-tight truncate-ellipsis">
-            {{ 'Elapsed: ' + getCurrentTimestamp + '/' + getEndTimestamp }}
+            {{ 'Elapsed: ' + currentTimestamps + '/' + getEndTimestamp }}
           </div>
         </div>
       </a>
@@ -64,12 +64,37 @@ import { functionTypeAnnotation } from '@babel/types'
 // import {useTimestamp} from 'vue'
 
 export default {
-  data() {
-    return {
+  // data() {
+    
+  //   return {
+  //     finished: false,
+  //     lanyard: {},
+  //     socket: null,
+      
+  //   }
+  // },
+  data: () =>({
       finished: false,
-      lanyard: {},
+      lanyard:{},
       socket: null,
-    }
+      currentTimestamps: '',
+  }),
+  methods:{
+      // alooMain(){
+      //   const lanyard = this.lanyard
+      //   const filtered = lanyard.activities?.filter((activity) => activity.type === 2)?.pop() ||
+      //   null
+      //   console.log(filtered)
+      //   if (this.lanyard?.discord_status === "offline") return "Offline"
+      //   else if (!filtered) return "Online"
+      //   else if (filtered.name === "Spotify" && !!lanyard.spotify) {
+      //     let min = Math.floor((new Date()-filtered.timestamps.start)/60000)
+      //     let secs = Math.floor((new Date()-filtered.timestamps.start)/1000 - 60*min)
+
+      //     this.alooSecs = secs
+      //     this.alooMin = min
+      //   }
+      // }
   },
 
   computed: {
@@ -118,19 +143,7 @@ export default {
         
       }
     },
-    getCurrentTimestamp()  {
-      const lanyard = this.lanyard
-      const filtered = lanyard.activities?.filter((activity) => activity.type === 2)?.pop() ||
-      null
-      if (this.lanyard?.discord_status === "offline") return "Offline"
-      else if (!filtered) return "Online"
-      else if (filtered.name === "Spotify" && !!lanyard.spotify) {
-        let min = Math.floor((new Date()-filtered.timestamps.start)/60000)
-        let secs = Math.floor((new Date()-filtered.timestamps.start)/1000 - 60*min)
-        return min + ":" + (secs < 10 ? "0" : "") + secs;
-     }
-    },
-
+    
     getEndTimestamp(){
       const lanyard = this.lanyard
       const filtered = lanyard.activities?.filter((activity) => activity.type === 2)?.pop() ||
@@ -138,8 +151,8 @@ export default {
       if (this.lanyard?.discord_status === "offline") return "Offline"
       else if (!filtered) return "Online"
       else if (filtered.name === "Spotify" && !!lanyard.spotify) {
-      let minute = Math.floor((filtered.timestamps.end-filtered.timestamps.start)/60000)
-      let seconds = Math.floor(((filtered.timestamps.end-filtered.timestamps.start)/1000)-minute*60) 
+      const minute = Math.floor((filtered.timestamps.end-filtered.timestamps.start)/60000)
+      const seconds = Math.floor(((filtered.timestamps.end-filtered.timestamps.start)/1000)-minute*60) 
       return minute + ":" + (seconds < 10 ? "0" : "") + seconds;
       }
     },
@@ -163,7 +176,7 @@ export default {
      if (filtered.assets == null) {
         return '/php.png'
       } else {
-        return `${this.lanyard.spotify.album_art_url}`
+        return `${lanyard.spotify.album_art_url}`
       }
     },
   },
@@ -176,7 +189,7 @@ export default {
     /**
      * Connect to Lanyard Socket API, send heartbeat every 30 seconds and replace the Vue data value with the message
      */
-    this.socket = new WebSocket('wss://api.codevizag.com/socket')
+    this.socket = new WebSocket('wss://api.lanyard.rest/socket')
     this.socket.addEventListener('open', () => {
       // Subscribe to ID
       this.socket.send(
@@ -202,11 +215,23 @@ export default {
         this.lanyard = status || {}
       this.finished = true
     })
+
+    setInterval(()=>{
+      const lanyard = this.lanyard
+      const filtered = lanyard.activities?.filter((activity) => activity.type === 2)?.pop() ||
+      null
+      if (this.lanyard?.discord_status === "offline") return "Offline"
+      else if (!filtered) return "Online"
+      else if (filtered.name === "Spotify" && !!lanyard.spotify) {
+        let min = Math.floor((new Date()-filtered.timestamps.start)/60000)
+        let secs = Math.floor((new Date()-filtered.timestamps.start)/1000 - 60*min)
+        
+        this.currentTimestamps = min + ":" + (secs < 10 ? "0" : "") + secs;
+      }
+    }, 1000)
         //this.test()
        // setInterval(this.test,1000);
-      
   },
-  
 }
 </script>
 <style></style>
