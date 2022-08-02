@@ -7,7 +7,6 @@
     "
     class="bg-green-500 dark:bg-green-600 w-full h-full flex items-center animate-pulse p-4 rounded-md"
   >
-
     <div class="w-16 h-16 rounded-md mr-4 bg-gray-900 outline-none" />
     <div class="flex flex-col justify-center space-y-2">
       <h1 class="h-4 w-25 bg-gray-900"></h1>
@@ -45,7 +44,7 @@
             {{ 'From ' + getStatusDetails.assets.large_text }}
           </div>
           <div class="text-sm leading-tight truncate-ellipsis">
-            {{ 'Elapsed: ' + currentTimestamps + '/' + getEndTimestamp }}
+            {{ 'Elapsed: ' + UpdatedTimestamp + ' / ' + getEndTimestamp }}
           </div>
         </div>
       </a>
@@ -58,51 +57,21 @@
     <h1 class="font-bold text-xl">PHP isn't Listening !</h1>
   </div>
 </template>
-
 <script>
 import { functionTypeAnnotation } from '@babel/types'
-// import {useTimestamp} from 'vue'
 
 export default {
-  // data() {
-    
-  //   return {
-  //     finished: false,
-  //     lanyard: {},
-  //     socket: null,
-      
-  //   }
-  // },
   data: () =>({
       finished: false,
-      lanyard:{},
+      lanyard: {},
       socket: null,
-      currentTimestamps: '',
+      UpdatedTimestamp: '',
   }),
-  methods:{
-      // alooMain(){
-      //   const lanyard = this.lanyard
-      //   const filtered = lanyard.activities?.filter((activity) => activity.type === 2)?.pop() ||
-      //   null
-      //   console.log(filtered)
-      //   if (this.lanyard?.discord_status === "offline") return "Offline"
-      //   else if (!filtered) return "Online"
-      //   else if (filtered.name === "Spotify" && !!lanyard.spotify) {
-      //     let min = Math.floor((new Date()-filtered.timestamps.start)/60000)
-      //     let secs = Math.floor((new Date()-filtered.timestamps.start)/1000 - 60*min)
-
-      //     this.alooSecs = secs
-      //     this.alooMin = min
-      //   }
-      // }
-  },
-
   computed: {
     /**
      * Returns status detail as string.
      * @returns {string}
      */
-
     getStatusDetails() {
       const lanyard = this.lanyard
       const filtered =
@@ -120,14 +89,10 @@ export default {
         null
      if (this.lanyard?.discord_status === "offline") return "Offline"
      else if (!filtered) return "Online"
-     
      else if (filtered.name === "Spotify" && !!lanyard.spotify) {
       const { song, artist } = lanyard.spotify || {}
       const firstArtist = artist?.replaceAll(";", ",")
-      //const newstr = str.replace(";", ","); 
-        
       return `${firstArtist || "someone"}`
-        
       }
     },
     getStatusLink() {
@@ -140,7 +105,6 @@ export default {
      
      else if (filtered.name === "Spotify" && !!lanyard.spotify) {
       return `https://open.spotify.com/track/${filtered.sync_id}?si=d4270c86c37947d7`
-        
       }
     },
     
@@ -225,12 +189,9 @@ export default {
       else if (filtered.name === "Spotify" && !!lanyard.spotify) {
         let min = Math.floor((new Date()-filtered.timestamps.start)/60000)
         let secs = Math.floor((new Date()-filtered.timestamps.start)/1000 - 60*min)
-        
-        this.currentTimestamps = min + ":" + (secs < 10 ? "0" : "") + secs;
+        this.UpdatedTimestamp = min + ":" + (secs < 10 ? "0" : "") + secs;
       }
     }, 1000)
-        //this.test()
-       // setInterval(this.test,1000);
   },
 }
 </script>
