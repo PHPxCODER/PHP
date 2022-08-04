@@ -43,7 +43,7 @@
         class="flex gap-2"
       >
         <img
-          class="w-16 h-16 relative rounded-md md:flex hidden bg-gray-700 outline-none"
+          class="w-16 h-16 relative rounded-md md:flex hidden outline-none"
           alt
           :src="getStatusImage"
         />
@@ -145,6 +145,10 @@ export default {
       // Netflix
       if (filtered.name === "Netflix") {
         return `https://i.imgur.com/LyG9Afx.png`
+      }
+      // Github
+      if (filtered.name === "GitHub" && filtered.assets) {
+        return `https://cdn.discordapp.com/app-assets/607587875122446359/607911518234869760.png`
       }
       // Null Value
         else if (filtered.assets == null) {
