@@ -150,7 +150,7 @@ export default {
       if (filtered.name === "GitHub" && filtered.assets) {
         return `https://cdn.discordapp.com/app-assets/607587875122446359/607911518234869760.png`
       }
-      // Null Value
+      // Else
         else if (filtered.assets == null) {
          return '/php.png'
       } else {
