@@ -41,20 +41,26 @@
       data() {
     return {
       technologies: [
+        'Node.js',
         'JavaScript',
         'TypeScript',
-        'Python',
         'Vue.js',
-        'Nuxt.js',
-        'WindiCSS',
+        'Python',
         'Firebase',
-        'Node.js',
-        'Sass',
-        'Docker',
-        'Dotnet',
-        'Github',
-        'Figma',
         'React',
+        'Nuxt.js',
+        'PHP',
+        'Figma',
+        'Sass',
+        'WindiCSS',
+        'Github',
+        'Vercel',
+        'Netlify',
+        'Docker',
+        'NGINX',
+        'Elixir',
+        'AWS',
+        'Digital Ocean'       
       ], 
       age: (new Date() - new Date("2004/07/21"))/(31557600000)
     }
