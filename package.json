@@ -1,25 +1,25 @@
 {
-  "name": "345dev.me",
+  "name": "https://php.codevizag.com/",
   "version": "5.1.0",
   "license": "MIT",
-  "homepage": "https://345dev.me",
+  "homepage": "https://php.codevizag.com/",
   "author": {
-    "name": "Mehmet Ali Külahçı",
-    "email": "345m.ali2007@gmail.com",
-    "url": "https://345dev.me"
+    "name": "PHPxCODER",
+    "email": "admin@codevizag.com",
+    "url": "https://php.codevizag.com/"
   },
   "bugs": {
-    "email": "345m.ali2007@gmail.com",
-    "url": "https://github.com/mehmetali345dev/website/issues"
+    "email": "admin@codevizag.com",
+    "url": "https://github.com/PHPxCODER/PHP/issues"
   },
   "funding": [
     {
       "type": "individual",
-      "url": "https://345dev.me/donate"
+      "url": "https://php.codevizag.com/"
     },
     {
       "type": "patreon",
-      "url": "https://www.patreon.com/mehmetali345"
+      "url": "https://patreon.com/PHPxCODER"
     }
   ],
   "scripts": {
