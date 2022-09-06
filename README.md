@@ -2,6 +2,7 @@
 
 
 [![CodeFactor](https://www.codefactor.io/repository/github/phpxcoder/php/badge)](https://www.codefactor.io/repository/github/phpxcoder/php)
+[![Better Uptime Badge](https://betteruptime.com/status-badges/v1/monitor/gceh.svg)](https://betteruptime.com/?utm_source=status_badge)
 
 My Personal Portfolio & Blog Made in ♥ with Nuxt.js, Vue.js, WindiCSS.
 
