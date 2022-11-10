@@ -144,7 +144,7 @@ export default {
       }
       // Netflix
       if (filtered.name === "Netflix") {
-        return `https://i.imgur.com/Wf8G0mk.gif`
+        return `https://media.discordapp.net/external/${filtered.assets.large_image.substring(12)}`
       }
       // Github
       if (filtered.name === "GitHub" && filtered.assets) {
