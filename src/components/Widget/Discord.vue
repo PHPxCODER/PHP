@@ -142,7 +142,10 @@ export default {
       if (filtered.name === "Prime Video") {
         return `https://cdn.discordapp.com/app-assets/705139844883677224/705140011946737806.webp`
       }
-
+      // Netflix
+      if (filtered.name === "Netflix") {
+        return `https://i.imgur.com/Wf8G0mk.gif`
+      }
       // Github
       if (filtered.name === "GitHub" && filtered.assets) {
         return `https://cdn.discordapp.com/app-assets/607587875122446359/607911518234869760.png`
