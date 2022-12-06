@@ -150,6 +150,12 @@ export default {
       if (filtered.name === "GitHub" && filtered.assets) {
         return `https://cdn.discordapp.com/app-assets/607587875122446359/607911518234869760.png`
       }
+      //Uncrashed : FPV Drone Simulator
+      if (filtered.name === "Uncrashed : FPV Drone Simulator") {
+        return `https://yt3.ggpht.com/KaHU3tbhahqfV9G6X-qmBooE6B1ML8a0st9XxnWBTbGa1OLn55uOAKFTrMlncVCPNoMooxYY=s900-c-k-c0x00ffffff-no-rj`
+      }
+      
+
       // Else
         else if (filtered.assets == null) {
          return '/php.png'
