@@ -102,6 +102,10 @@ export default {
       const filtered =
         lanyard.activities?.filter((activity) => activity.type === 0)?.pop() ||
         {}
+        // Spotify
+        if (filtered.name === "Spotify" && filtered.assets) {
+        return `https://media.discordapp.net/external/${filtered.assets.large_image.substring(12)}`
+      }
       // Valorant
       if (filtered.name == 'VALORANT') {
         return 'https://cdn.discordapp.com/app-icons/700136079562375258/e55fc8259df1548328f977d302779ab7.webp'
