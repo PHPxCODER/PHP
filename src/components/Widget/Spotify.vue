@@ -153,7 +153,7 @@ export default {
     /**
      * Connect to Lanyard Socket API, send heartbeat every 30 seconds and replace the Vue data value with the message
      */
-    this.socket = new WebSocket('wss://api.codevizag.com/socket')
+    this.socket = new WebSocket('wss://api.phpxcoder.in/socket')
     this.socket.addEventListener('open', () => {
       // Subscribe to ID
       this.socket.send(
