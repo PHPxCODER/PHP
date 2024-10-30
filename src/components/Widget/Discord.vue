@@ -139,7 +139,7 @@ export default {
         return `https://cdn.discordapp.com/app-assets/463097721130188830/513734690272968717.webp`
       } 
       // YouTube Music
-      if (filtered.name === "YouTube Music" && filtered.assets) {
+      if (filtered.name === "YouTube Music" || (filtered.name === "Visual Studio Code") && filtered.assets) {
         return `https://media.discordapp.net/external/${filtered.assets.large_image.substring(12)}`
       }
       // Prime Video
