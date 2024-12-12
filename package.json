@@ -1,12 +1,12 @@
 {
-  "name": "php.codevizag.com",
+  "name": "phpxcoder.in",
   "version": "5.1.0",
   "license": "MIT",
-  "homepage": "https://php.codevizag.com/",
+  "homepage": "https://phpxcoder.in",
   "author": {
     "name": "PHPxCODER",
     "email": "admin@codevizag.com",
-    "url": "https://php.codevizag.com/"
+    "url": "https://phpxcoder.in/"
   },
   "bugs": {
     "email": "admin@codevizag.com",
@@ -15,7 +15,7 @@
   "funding": [
     {
       "type": "individual",
-      "url": "https://php.codevizag.com/"
+      "url": "https://phpxcoder.in"
     },
     {
       "type": "patreon",
