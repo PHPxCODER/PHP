@@ -1,4 +1,4 @@
-# php.codevizag.com
+# phpxcoder.in
 
 
 [![CodeFactor](https://www.codefactor.io/repository/github/phpxcoder/php/badge)](https://www.codefactor.io/repository/github/phpxcoder/php)

@@ -31,7 +31,7 @@ const description =
       {
         hid: 'twitter:title',
         name: 'twitter:title',
-        content: 'php.codevizag.com',
+        content: 'phpxcoder.in',
       },
       {
         hid: 'twitter:description',
@@ -57,7 +57,7 @@ const description =
       {
         hid: 'og:site_name',
         name: 'og:site_name',
-        content: 'php.codevizag.com',
+        content: 'phpxcoder.in',
       },
       {
         hid: 'og:description',

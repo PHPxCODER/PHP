@@ -1,6 +1,6 @@
 <template>
   <div class="flex gap-3 flex-col w-full h-full">
-    <p>Enter an URL to this textbox example is https://php.codevizag.com/</p>
+    <p>Enter an URL to this textbox example is https://phpxcoder.in/</p>
     <input
       type="text"
       placeholder="Enter an URL"
@@ -56,7 +56,7 @@
 export default {
   data() {
     return {
-      url: 'https://php.codevizag.com/',
+      url: 'https://phpxcoder.in/',
       tag: [],
     }
   },
@@ -64,7 +64,7 @@ export default {
   async fetch() {
     const url =
       process.env.NODE_ENV === 'production'
-        ? `https://php.codevizag.com/.netlify/functions/getMetatag?url=${this.url}`
+        ? `https://phpxcoder.in/.netlify/functions/getMetatag?url=${this.url}`
         : `http://localhost:8888/.netlify/functions/getMetatag?url=${this.url}`
 
     const { data: meta } = await this.$axios.get(url)
@@ -74,7 +74,7 @@ export default {
     const title = 'Metatag Viewer'
     const description =
       'Fetch metatag from a website and display it in a simple way'
-    const href = `https://php.codevizag.com/info/metatag`
+    const href = `https://phpxcoder.in/info/metatag`
     const object = {
       title,
       meta: [

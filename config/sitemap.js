@@ -9,7 +9,7 @@ export default async function () {
   }
 
   return {
-    hostname: "https://php.codevizag.com",
+    hostname: "https://phpxcoder.in",
     gzip: true,
     routes,
   }
