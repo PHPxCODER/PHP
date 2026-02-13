@@ -1,69 +1,60 @@
 <template>
-  <nuxt-link
+  <NuxtLink
     v-if="type == 'latest'"
-    :to="{
-      name: 'blog-slug',
-      params: { slug: getPostMeta.slug },
-    }"
+    :to="postMeta.path || `/blog/${postMeta.slug}`"
     class="bg-gray-900 scale-up flex justify-start bg-opacity-30 items-center rounded-md px-6 py-4"
   >
     <img
-      :src="getPostMeta.image"
+      :src="postMeta.image"
       class="rounded-md h-16 w-20 object-cover mr-3"
     />
     <div class="flex flex-col">
-      <h1 class="font-semibold text-lg">{{ getPostMeta.title }}</h1>
+      <h1 class="font-semibold text-lg">{{ postMeta.title }}</h1>
       <p class="line-clamp-2 text-sm text-left">
-        {{ getPostMeta.description }}
+        {{ postMeta.description }}
       </p>
     </div>
-  </nuxt-link>
-  <nuxt-link
+  </NuxtLink>
+  <NuxtLink
     v-else
-    :to="{
-      name: 'blog-slug',
-      params: { slug: getPostMeta.slug },
-    }"
+    :to="postMeta.path || `/blog/${postMeta.slug}`"
     class="bg-gray-900 flex bg-opacity-30 items-center rounded-md px-6 py-4"
   >
     <div class="flex flex-col">
-      <h1 class="font-semibold text-lg">{{ getPostMeta.title }}</h1>
+      <h1 class="font-semibold text-lg">{{ postMeta.title }}</h1>
       <p class="line-clamp-2 text-sm text-left">
-        {{ getPostMeta.description }}
+        {{ postMeta.description }}
       </p>
     </div>
-  </nuxt-link>
+  </NuxtLink>
 </template>
 
-<script>
-export default {
-  props: {
-    post: {
-      type: Object,
-      required: true,
-      default: () => {},
-    },
-    type: {
-      type: String,
-      required: false,
-      default: 'normal',
-    },
+<script setup>
+const props = defineProps({
+  post: {
+    type: Object,
+    required: true,
+    default: () => ({}),
   },
-  computed: {
-    getPostMeta() {
-      const image =
-        this.post?.image || `/assets/images/posts/${this.post?.slug}.jpg` || ''
-      return {
-        title: this.post.title || '',
-        description: this.post.description || '',
-        slug: this.post.slug || '',
-        special: this.post.special || false,
-        tag: this.post?.tags?.[0] || '',
-        image,
-      }
-    },
+  type: {
+    type: String,
+    default: 'normal',
   },
-}
-</script>
+})
 
-<style></style>
+const postMeta = computed(() => {
+  const slug =
+    props.post._path?.replace('/blog/', '') || props.post.slug || ''
+  const image =
+    props.post.image || `/assets/images/posts/${slug}.jpg` || ''
+  return {
+    title: props.post.title || '',
+    description: props.post.description || '',
+    slug,
+    path: props.post._path || '',
+    special: props.post.special || false,
+    tag: props.post.tags?.[0] || '',
+    image,
+  }
+})
+</script>

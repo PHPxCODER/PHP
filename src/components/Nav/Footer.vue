@@ -8,25 +8,21 @@
         class="font-bold text-xl"
         target="_blank"
         rel="noreferrer noopener"
-      >{{ getText }}</a>
+        >{{ text }}</a
+      >
       <Contact />
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  computed: {
-    getText() {
-      if (!this.$route.path.includes('blog')) {
-        return "This Website is Open Source on Github";
+<script setup>
+const route = useRoute()
 
-      } else {
-        return "404 Not Found";
-      }
-    }
+const text = computed(() => {
+  if (!route.path.includes('blog')) {
+    return 'This Website is Open Source on Github'
+  } else {
+    return '404 Not Found'
   }
-}
+})
 </script>
-
-<style scoped></style>

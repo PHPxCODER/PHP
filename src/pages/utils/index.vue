@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col w-full gap-3">
-    <nuxt-link
+    <NuxtLink
       to="/utils/metatag"
       class="bg-gray-900 scale-up rounded-md w-full gap-2 flex flex-col bg-opacity-30 p-4"
     >
@@ -12,6 +12,6 @@
         Featured
         <IconFire class="w-6 rounded-full h-6 text-red-600" />
       </p>
-    </nuxt-link>
+    </NuxtLink>
   </div>
 </template>

@@ -4,10 +4,8 @@
   </div>
 </template>
 
-<script>
-export default {
-  head: {
-    title: 'Welcome',
-  },
-}
+<script setup>
+useHead({
+  title: 'Welcome',
+})
 </script>

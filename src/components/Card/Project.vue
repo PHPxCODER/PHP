@@ -11,26 +11,16 @@
     />
     <div class="grid items-center">
       <h1 class="text-lg font-bold">{{ project.title }}</h1>
-      <p class="">{{ project.description }}</p>
+      <p>{{ project.description }}</p>
     </div>
   </a>
 </template>
 
-<script>
-export default {
-  props: {
-    project: {
-      type: Array,
-      required: true,
-    },
+<script setup>
+defineProps({
+  project: {
+    type: Object,
+    required: true,
   },
-  data() {
-    return {
-      itemLoaded: false,
-      backgroundSize: 'cover',
-    }
-  },
-}
+})
 </script>
-
-<style></style>

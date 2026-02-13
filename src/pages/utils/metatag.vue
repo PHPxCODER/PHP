@@ -9,40 +9,43 @@
     />
     <button
       class="focus:outline-none bg-green-600 p-2 w-full rounded-md font-bold text-2xl"
-      @click="$fetch"
+      @click="fetchMeta"
     >
       Fetch
     </button>
-    <div class="text-2xl text-red-600 font-bold" v-if="$fetchState.error">
+    <div class="text-2xl text-red-600 font-bold" v-if="fetchError">
       Fetching metatag is failed!
     </div>
     <div
-      v-else-if="$fetchState.pending"
+      v-else-if="loading"
       class="font-bold text-2xl flex gap-2 items-center flex-wrap justify-center flex-grow"
     >
       <IconCircle class="animate-spin w-16 h-16" />
       Please wait, fetching now!
     </div>
-    <div v-else>
+    <div v-else-if="tag">
       <div class="flex flex-col gap-3">
         <div
           class="flex flex-col gap-3 p-4 rounded-md bg-gray-900 bg-opacity-30"
         >
           <a
             class="flex gap-2 flex-wrap text-blue-600"
-            v-if="tag.metadata.website"
+            v-if="tag.metadata?.website"
             :href="tag.metadata.website"
-            ><img :src="tag.favicons[1]" class="w-6 h-6 rounded-md" />{{ tag.metadata.website }}</a
+            ><img
+              :src="tag.favicons?.[1]"
+              class="w-6 h-6 rounded-md"
+            />{{ tag.metadata.website }}</a
           >
-          <h1 v-if="tag.metadata.title" class="font-bold text-lg">
+          <h1 v-if="tag.metadata?.title" class="font-bold text-lg">
             Title: {{ tag.metadata.title }}
           </h1>
           <Skeleton
             type="image"
             class="h-full min-h-96 rounded-md"
-            :imageUrl="tag.metadata.banner"
+            :imageUrl="tag.metadata?.banner"
           />
-          <div v-if="tag.metadata.description">
+          <div v-if="tag.metadata?.description">
             <h1 class="font-bold text-lg">Description:</h1>
             <p>{{ tag.metadata.description }}</p>
           </div>
@@ -52,83 +55,38 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      url: 'https://phpxcoder.in/',
-      tag: [],
-    }
-  },
-  fetchOnServer: false,
-  async fetch() {
-    const url =
-      process.env.NODE_ENV === 'production'
-        ? `https://phpxcoder.in/.netlify/functions/getMetatag?url=${this.url}`
-        : `http://localhost:8888/.netlify/functions/getMetatag?url=${this.url}`
+<script setup>
+const url = ref('https://phpxcoder.in/')
+const tag = ref(null)
+const loading = ref(false)
+const fetchError = ref(false)
 
-    const { data: meta } = await this.$axios.get(url)
-    this.tag = meta
-  },
-  head() {
-    const title = 'Metatag Viewer'
-    const description =
-      'Fetch metatag from a website and display it in a simple way'
-    const href = `https://phpxcoder.in/info/metatag`
-    const object = {
-      title,
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: description,
-        },
-        {
-          hid: 'keywords',
-          name: 'keywords',
-          content: `mehmetali345, mehmetali345 blog, blog, teknoloji, vue, yazılım, discord, mehmetali_345, gönderi`,
-        },
-        // Open-Graph
-        {
-          hid: 'og:title',
-          name: 'og:title',
-          content: title,
-        },
-        {
-          hid: 'og:description',
-          name: 'og:description',
-          content: description,
-        },
-        {
-          hid: 'og:url',
-          name: 'og:url',
-          content: href,
-        },
-        // Twitter
-        {
-          hid: 'twitter:title',
-          name: 'twitter:title',
-          content: title,
-        },
-        {
-          hid: 'twitter:description',
-          name: 'twitter:description',
-          content: description,
-        },
-      ].map((i) => {
-        if (i.name && !i.property) i.property = i.name
-        return i
-      }),
-      link: [
-        {
-          rel: 'canonical',
-          href,
-        },
-      ],
-    }
-    return object
-  },
+async function fetchMeta() {
+  loading.value = true
+  fetchError.value = false
+  try {
+    const data = await $fetch('/api/metatag', {
+      params: { url: url.value },
+    })
+    tag.value = data
+  } catch (e) {
+    fetchError.value = true
+  } finally {
+    loading.value = false
+  }
 }
-</script>
 
-<style></style>
+const title = 'Metatag Viewer'
+const description =
+  'Fetch metatag from a website and display it in a simple way'
+
+useHead({ title })
+useSeoMeta({
+  description,
+  ogTitle: title,
+  ogDescription: description,
+  ogUrl: 'https://phpxcoder.in/utils/metatag',
+  twitterTitle: title,
+  twitterDescription: description,
+})
+</script>

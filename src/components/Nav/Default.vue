@@ -4,31 +4,29 @@
   >
     <div class="w-full flex items-center justify-center">
       <div class="flex w-full md:w-9/12 items-center justify-between">
-        <nuxt-link to="/">
+        <NuxtLink to="/">
           <div class="flex items-center">
-            <nuxt-img
+            <NuxtImg
               src="/php2.png"
               alt="PHP"
               format="webp"
               class="w-10 h-10 rounded-md"
             />
-            <h1 class="font-bold hidden sm:block text-2xl ml-4">
-              PHPxCODER
-            </h1>
+            <h1 class="font-bold hidden sm:block text-2xl ml-4">PHPxCODER</h1>
           </div>
-        </nuxt-link>
+        </NuxtLink>
         <div class="flex gap-2 items-center">
-          <nuxt-link
+          <NuxtLink
             v-if="currentPath"
             to="/"
             class="font-bold text-lg text-black dark:text-white"
-            >Go back</nuxt-link
+            >Go back</NuxtLink
           >
-          <nuxt-link
-            v-if="$route.params.slug"
+          <NuxtLink
+            v-if="route.params.slug"
             to="/blog"
             class="font-bold text-lg text-black dark:text-white"
-            >Geri dön</nuxt-link
+            >Geri dön</NuxtLink
           >
           <Color />
         </div>
@@ -37,30 +35,20 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      paths: [
-        'info-projects',
-        'info-repos',
-        'info-whoami',
-        'dictionary',
-        'recommends',
-        'donate',
-        'blog'
-      ],
-    }
-  },
-  computed: {
-    currentPath() {
-      if (this.paths.includes(this.$route.name)) {
-        return true
-      } else {
-        return false
-      }
-    },
-  },
-}
+<script setup>
+const route = useRoute()
+
+const paths = [
+  'info-projects',
+  'info-repos',
+  'info-whoami',
+  'dictionary',
+  'recommends',
+  'donate',
+  'blog',
+]
+
+const currentPath = computed(() => {
+  return paths.includes(route.name)
+})
 </script>
-<style></style>

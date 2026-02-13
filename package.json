@@ -1,6 +1,6 @@
 {
   "name": "phpxcoder.in",
-  "version": "5.1.0",
+  "version": "6.0.0",
   "license": "MIT",
   "homepage": "https://phpxcoder.in",
   "author": {
@@ -23,42 +23,29 @@
     }
   ],
   "scripts": {
-    "dev": "nuxt",
+    "dev": "nuxt dev",
     "build": "nuxt build",
-    "start": "nuxt start",
     "generate": "nuxt generate",
-    "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
-    "lint": "yarn lint:js"
-  },
-  "dependencies": {
-    "@guillaumebriday/vue-scroll-progress-bar": "^1.0.0",
-    "@netlify/functions": "^0.10.0",
-    "@nuxt/content": "^1.15.1",
-    "@nuxtjs/axios": "^5.13.6",
-    "@nuxtjs/pwa": "^3.3.5",
-    "@nuxtjs/robots": "^2.5.0",
-    "@nuxtjs/sitemap": "^2.4.0",
-    "core-js": "^3.20.2",
-    "meta-fetcher": "^3.1.1",
-    "nuxt": "^2.15.7",
-    "nuxt-helmet": "^2.0.1",
-    "nuxt-webfontloader": "^1.1.0",
-    "prism-themes": "^1.9.0",
-    "sass": "^1.46.0",
-    "sass-loader": "10.1.1",
-    "v-tooltip": "^3.0.0-beta.12",
-    "vue-animate-onscroll": "^1.0.8",
-    "vue-disqus": "^4.0.1"
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@nuxt/image": "^0.6.0",
-    "@nuxtjs/color-mode": "^2.1.1",
-    "@nuxtjs/google-analytics": "^2.4.0",
-    "@nuxtjs/moment": "^1.6.1",
-    "@windicss/plugin-animations": "^1.0.9",
-    "@windicss/plugin-scrollbar": "^1.2.3",
-    "nuxt-compress": "^5.0.0",
-    "nuxt-windicss": "^2.2.2",
-    "prettier": "^2.5.0"
+    "nuxt": "^3.14",
+    "@nuxt/content": "^2.13",
+    "@nuxt/image": "^1.8",
+    "@nuxtjs/tailwindcss": "^6.12",
+    "@nuxtjs/color-mode": "^3.5",
+    "@nuxtjs/google-fonts": "^3.2",
+    "@nuxtjs/robots": "^4.1",
+    "@nuxtjs/sitemap": "^6.1",
+    "nuxt-gtag": "^3.0",
+    "@vite-pwa/nuxt": "^0.10",
+    "floating-vue": "^5.2",
+    "dayjs": "^1.11",
+    "meta-fetcher": "^3.1.1",
+    "sass": "^1.80",
+    "prism-themes": "^1.9.0",
+    "prettier": "^3.4",
+    "tailwindcss": "^3.4"
   }
 }

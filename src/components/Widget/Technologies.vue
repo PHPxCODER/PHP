@@ -14,30 +14,22 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      technologies: [
-        'JavaScript',
-        'TypeScript',
-        'C#',
-        'Python',
-        'Vue.js',
-        'Nuxt.js',
-        'WindiCSS',
-        'Firebase',
-        'Node.js',
-        'Sass',
-        'Docker',
-        'Dotnet',
-        'Github',
-        'Figma',
-        'React',
-      ],
-    }
-  },
-}
+<script setup>
+const technologies = [
+  'JavaScript',
+  'TypeScript',
+  'C#',
+  'Python',
+  'Vue.js',
+  'Nuxt.js',
+  'TailwindCSS',
+  'Firebase',
+  'Node.js',
+  'Sass',
+  'Docker',
+  'Dotnet',
+  'Github',
+  'Figma',
+  'React',
+]
 </script>
-
-<style></style>
