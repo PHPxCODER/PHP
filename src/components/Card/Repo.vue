@@ -12,9 +12,9 @@
         <IconFork
           v-if="repo.fork"
           class="w-6 h-6"
-          v-bind:class="{
-            ' text-white': $colorMode.preference === 'dark',
-            ' text-black': $colorMode.preference === 'light',
+          :class="{
+            'text-white': colorMode.value === 'dark',
+            'text-black': colorMode.value === 'light',
           }"
         />
         <h1>{{ repo.stargazers_count }}</h1>
@@ -40,22 +40,19 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    repo: {
-      type: Object,
-      required: true,
-    },
+<script setup>
+const props = defineProps({
+  repo: {
+    type: Object,
+    required: true,
   },
-  computed: {
-    repoLanguage() {
-      if (this.repo.language === 'Vue') return 'Vue.js'
-      else if (this.repo.language === 'SCSS') return 'Sass'
-      else return this.repo.language
-    },
-  },
-}
-</script>
+})
 
-<style></style>
+const colorMode = useColorMode()
+
+const repoLanguage = computed(() => {
+  if (props.repo.language === 'Vue') return 'Vue.js'
+  else if (props.repo.language === 'SCSS') return 'Sass'
+  else return props.repo.language
+})
+</script>

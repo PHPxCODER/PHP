@@ -5,7 +5,7 @@
   >
     <h1>
       <svg
-        v-if="getSelectedTheme === 'light'"
+        v-if="colorMode.preference === 'light'"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
@@ -38,26 +38,10 @@
   </div>
 </template>
 
-<script>
-export default {
-  computed: {
-    /**
-     * Returns the selected color mode value.
-     * @returns {'light'|'dark'} The color mode as "light" or "dark".
-     */
-    getSelectedTheme() {
-      return this.$colorMode.value;
-    },
-  },
-  methods: {
-    /**
-     * Updates the color mode value.
-     * @param {'light'|'dark'} option The color mode option.
-     */
-    switchTheme() {
-      this.$colorMode.preference =
-        this.getSelectedTheme === "dark" ? "light" : "dark";
-    },
-  },
-};
+<script setup>
+const colorMode = useColorMode()
+
+function switchTheme() {
+  colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
+}
 </script>

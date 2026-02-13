@@ -1,40 +1,23 @@
-<script>
-export default {
-  data() {
-    return {
-      position: 0,
-    }
-  },
-  computed: {
-    /**
-     * Checks if the position is higher than a specific number and returns a boolean value.
-     * @returns {boolean} Higher than the given number.
-     */
-    isActive() {
-      return this.position > 100
-    },
-  },
-  mounted() {
-    window.addEventListener('scroll', this.updatePosition)
-  },
-  methods: {
-    /**
-     * Updates the Vue data when it's called.
-     */
-    updatePosition() {
-      this.position = window.scrollY
-    },
-    /**
-     * Scrolls window to top.
-     */
-    goTop() {
-      window.scrollTo(0, 0)
-    },
-  },
-  beforeDestroy() {
-    window.removeEventListener('scroll', this.updatePosition)
-  },
+<script setup>
+const position = ref(0)
+
+const isActive = computed(() => position.value > 100)
+
+function updatePosition() {
+  position.value = window.scrollY
 }
+
+function goTop() {
+  window.scrollTo(0, 0)
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', updatePosition)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', updatePosition)
+})
 </script>
 
 <template>

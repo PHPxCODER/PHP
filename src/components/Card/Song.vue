@@ -14,7 +14,7 @@
       >
         <h1 class="flex gap-3 font-bold text-lg">
           Name:
-          <h1 class="w-full">{{ song.name }}</h1>
+          <span class="w-full">{{ song.name }}</span>
         </h1>
       </div>
       <div
@@ -22,7 +22,7 @@
       >
         <h1 class="flex gap-3 font-bold text-lg">
           Artist:
-          <h1 class="w-full">{{ song.artist }}</h1>
+          <span class="w-full">{{ song.artist }}</span>
         </h1>
       </div>
       <div
@@ -30,7 +30,7 @@
       >
         <h1 class="flex gap-3 font-bold text-lg">
           Date:
-          <h1 class="w-full">{{ getDate }}</h1>
+          <span class="w-full">{{ formattedDate }}</span>
         </h1>
       </div>
       <a
@@ -55,18 +55,17 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    song: {
-      type: Object,
-      required: true,
-    },
+<script setup>
+import dayjs from 'dayjs'
+
+const props = defineProps({
+  song: {
+    type: Object,
+    required: true,
   },
-  computed: {
-    getDate() {
-      return this.$moment(this.song.date).format('YYYY/MM/DD')
-    },
-  },
-}
+})
+
+const formattedDate = computed(() => {
+  return dayjs(props.song.date).format('YYYY/MM/DD')
+})
 </script>

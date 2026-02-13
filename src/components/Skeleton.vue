@@ -8,12 +8,10 @@
       <div
         class="w-7/12 h-5 bg-gray-300 rounded-md dark:bg-gray-900 animate-pulse"
       />
-
       <div
         class="w-2/12 h-5 bg-gray-300 rounded-md dark:bg-gray-900 animate-pulse"
       />
     </div>
-
     <div class="w-full h-4 bg-gray-300 rounded-md dark:bg-gray-900" />
     <div class="w-4/12 h-4 bg-gray-300 rounded-md dark:bg-gray-900" />
   </div>
@@ -24,10 +22,10 @@
     class="focus:outline-none"
     :class="{
       'bg-gray-100 dark:bg-gray-900 bg-opacity-30 w-full animate-pulse bg-no-repeat':
-        itemLoaded === false,
+        !itemLoaded,
     }"
     :style="{
-      backgroundImage: itemLoaded === true ? `url('${imageUrl}')` : '',
+      backgroundImage: itemLoaded ? `url('${imageUrl}')` : '',
       backgroundPosition: 'center',
       backgroundSize: 'cover',
     }"
@@ -47,15 +45,14 @@
   <div
     v-else-if="type === 'iframe'"
     :class="{
-      'bg-gray-100 dark:bg-gray-800 rounded animate-pulse':
-        itemLoaded === false,
+      'bg-gray-100 dark:bg-gray-800 rounded animate-pulse': !itemLoaded,
     }"
   >
     <iframe
       v-if="iframeUrl"
       :class="{
         'w-full h-full rounded': true,
-        invisible: itemLoaded === false,
+        invisible: !itemLoaded,
       }"
       :src="iframeUrl"
       @load="itemLoaded = true"
@@ -63,7 +60,10 @@
   </div>
 
   <!-- Song Card -->
-  <div v-else-if="type === 'song'" class="animate-pulse w-full flex flex-col md:flex-row gap-3">
+  <div
+    v-else-if="type === 'song'"
+    class="animate-pulse w-full flex flex-col md:flex-row gap-3"
+  >
     <div class="w-full bg-gray-900 bg-opacity-30"></div>
     <div class="flex flex-col w-full gap-3">
       <div
@@ -71,16 +71,15 @@
       >
         <h1 class="flex gap-3 font-bold text-lg">
           Name:
-          <h1 class="w-full h-6 rounded-sm bg-gray-800 bg-opacity-40"></h1>
+          <span class="w-full h-6 rounded-sm bg-gray-800 bg-opacity-40"></span>
         </h1>
       </div>
       <div
         class="flex flex-col p-4 w-full dark:bg-gray-900 bg-opacity-30 rounded-md gap-3"
       >
-      
         <h1 class="flex gap-3 font-bold text-lg">
           Artist:
-          <h1 class="w-full h-6 rounded-sm bg-gray-800 bg-opacity-40"></h1>
+          <span class="w-full h-6 rounded-sm bg-gray-800 bg-opacity-40"></span>
         </h1>
       </div>
       <a
@@ -116,38 +115,31 @@
       class="font-bold w-full h-6 text-lg rounded-md bg-gray-800 bg-opacity-30"
     ></h1>
     <p class="h-16 w-full bg-gray-800 bg-opacity-30"></p>
-    <p class="gap-2 w-24 h-3 bg-gray-800 bg-opacity-30 flex items-center"></p>
+    <p
+      class="gap-2 w-24 h-3 bg-gray-800 bg-opacity-30 flex items-center"
+    ></p>
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    type: {
-      type: String,
-      required: false,
-      default: 'block',
-    },
-    imageUrl: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    backgroundSize: {
-      type: String,
-      required: false,
-      default: 'cover',
-    },
-    iframeUrl: {
-      type: String,
-      required: false,
-      default: null,
-    },
+<script setup>
+defineProps({
+  type: {
+    type: String,
+    default: 'block',
   },
-  data() {
-    return {
-      itemLoaded: false,
-    }
+  imageUrl: {
+    type: String,
+    default: null,
   },
-}
+  backgroundSize: {
+    type: String,
+    default: 'cover',
+  },
+  iframeUrl: {
+    type: String,
+    default: null,
+  },
+})
+
+const itemLoaded = ref(false)
 </script>

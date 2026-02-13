@@ -25,7 +25,7 @@
         <div>
           <h1 class="text-lg font-bold">{{ account.name }}</h1>
           <span
-            v-if="account.revealed == true"
+            v-if="account.revealed"
             class="text-gray-800 dark:text-gray-200"
           >
             {{ account.iban }}
@@ -44,80 +44,28 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      accounts: [
-        {
-          image:
-            'https://crosstech.com.tr/wp-content/uploads/2020/08/Papara-780x675.png',
-          name: 'Papara',
-          iban: '1212538229',
-          revealed: false,
-        },
-      ],
-    }
+<script setup>
+const accounts = reactive([
+  {
+    image:
+      'https://crosstech.com.tr/wp-content/uploads/2020/08/Papara-780x675.png',
+    name: 'Papara',
+    iban: '1212538229',
+    revealed: false,
   },
-  head() {
-    const title = 'Donate'
-    const description =
-      'You can see my supporters from this page and you can support me.'
-    const href = `https://345dev.me/donate`
-    const object = {
-      title,
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: description,
-        },
-        {
-          hid: 'keywords',
-          name: 'keywords',
-          content: `mehmetali345, mehmetali345 blog, blog, teknoloji, vue, yazılım, discord, mehmetali_345, gönderi`,
-        },
-        // Open-Graph
-        {
-          hid: 'og:title',
-          name: 'og:title',
-          content: title,
-        },
-        {
-          hid: 'og:description',
-          name: 'og:description',
-          content: description,
-        },
-        {
-          hid: 'og:url',
-          name: 'og:url',
-          content: href,
-        },
-        // Twitter
-        {
-          hid: 'twitter:title',
-          name: 'twitter:title',
-          content: title,
-        },
-        {
-          hid: 'twitter:description',
-          name: 'twitter:description',
-          content: description,
-        },
-      ].map((i) => {
-        if (i.name && !i.property) i.property = i.name
-        return i
-      }),
-      link: [
-        {
-          rel: 'canonical',
-          href,
-        },
-      ],
-    }
-    return object
-  },
-}
-</script>
+])
 
-<style></style>
+const title = 'Donate'
+const description =
+  'You can see my supporters from this page and you can support me.'
+
+useHead({ title })
+useSeoMeta({
+  description,
+  ogTitle: title,
+  ogDescription: description,
+  ogUrl: 'https://phpxcoder.in/donate',
+  twitterTitle: title,
+  twitterDescription: description,
+})
+</script>

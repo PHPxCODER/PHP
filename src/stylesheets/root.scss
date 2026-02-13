@@ -1,7 +1,5 @@
-@import 'transitions';
-@import 'scrollbar';
-@import 'disqus';
-@import url(../static/fonts/stylesheet.css);
+@use 'transitions';
+@use 'scrollbar';
 
 html {
   font-family: "Bauhaus Std";
@@ -11,7 +9,7 @@ html {
 }
 
 @mixin code {
-  @apply bg-green-100 py-px px-1 text-green-600 dark:(bg-green-900 bg-opacity-50 text-green-400);
+  @apply bg-green-100 py-px px-1 text-green-600 dark:bg-green-900 dark:bg-opacity-50 dark:text-green-400;
   &::before,
   &::after {
     content: '`';
@@ -19,7 +17,7 @@ html {
 }
 
 .scale-up{
-  @apply hover:scale-103 transform ease-in transition-all duration-200;
+  @apply hover:scale-105 transform ease-in transition-all duration-200;
 }
 
 .nuxt-content {
@@ -60,14 +58,8 @@ html {
   }
 
   /** Apply style for codeblocks */
-  .nuxt-content-highlight {
-    @apply my-2 relative;
-    .filename {
-      @apply font-light mt-3 mr-3 text-sm right-0 text-gray-300 z-10 absolute;
-    }
-    pre {
-      @apply rounded-md text-sm py-4 px-6;
-    }
+  pre {
+    @apply my-2 rounded-md text-sm py-4 px-6;
   }
 
   ol,

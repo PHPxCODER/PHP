@@ -1,54 +1,53 @@
 <template>
   <div>
-    <div class="flex items-center md:justify-start w-full justify-between gap-2">
+    <div
+      class="flex items-center md:justify-start w-full justify-between gap-2"
+    >
       <a
-        v-for="(links, index) in getLinks"
+        v-for="(link, index) in links"
         :key="`links-${index}`"
-        :title="links.title"
-        :href="links.url"
+        :title="link.title"
+        :href="link.url"
         target="_blank"
       >
-        <IconBrand :name="links.icon" class="dark:text-white h-8 w-8" />
+        <IconBrand :name="link.icon" class="dark:text-white h-8 w-8" />
       </a>
-      <a title="Send me an e-mail!" :href="isLoaded ? `${$config.links.mail}` : false">
+      <a
+        title="Send me an e-mail!"
+        :href="isLoaded ? config.public.links.mail : undefined"
+      >
         <IconAt class="h-8 w-8" />
       </a>
-      <BlogGoTop v-if="$route.path.includes('blog')" />
+      <BlogGoTop v-if="route.path.includes('blog')" />
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      isLoaded: false,
-    }
-  },
-  mounted() {
-    this.isLoaded = true
-  },
-  computed: {
-    getLinks() {
-      const links = this.$config.links
-      const titles = {
-        discord: 'Join my Discord server!',
-        twitter: 'Follow me on Twitter!',
-        github: 'Follow me on GitHub!',
-      }
-      const array = []
-      for (const item in links) {
-        if (item === 'mail') continue
-        array.push({
-          // @ts-ignore-next-line
-          url: links[item],
-          // @ts-ignore-next-line
-          title: titles[item] || `Visit ${item}!`,
-          icon: item,
-        })
-      }
-      return array
-    },
-  },
-}
+<script setup>
+const config = useRuntimeConfig()
+const route = useRoute()
+const isLoaded = ref(false)
+
+onMounted(() => {
+  isLoaded.value = true
+})
+
+const links = computed(() => {
+  const configLinks = config.public.links
+  const titles = {
+    discord: 'Join my Discord server!',
+    twitter: 'Follow me on Twitter!',
+    github: 'Follow me on GitHub!',
+  }
+  const array = []
+  for (const item in configLinks) {
+    if (item === 'mail') continue
+    array.push({
+      url: configLinks[item],
+      title: titles[item.toLowerCase()] || `Visit ${item}!`,
+      icon: item,
+    })
+  }
+  return array
+})
 </script>

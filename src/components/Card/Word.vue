@@ -7,23 +7,22 @@
     </h1>
     <p>{{ word.exp }}</p>
     <p class="gap-2 flex items-center">
-      <IconCalendar class="h-6 w-6" />{{ getDate(word.date) }}
+      <IconCalendar class="h-6 w-6" />{{ formattedDate }}
     </p>
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    word: {
-      type: Object,
-      required: true,
-    },
+<script setup>
+import dayjs from 'dayjs'
+
+const props = defineProps({
+  word: {
+    type: Object,
+    required: true,
   },
-  methods: {
-    getDate(date) {
-      return this.$moment(date).format('YYYY/MM/DD')
-    },
-  },
-}
+})
+
+const formattedDate = computed(() => {
+  return dayjs(props.word.date).format('YYYY/MM/DD')
+})
 </script>
