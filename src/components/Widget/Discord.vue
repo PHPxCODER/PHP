@@ -101,7 +101,7 @@ const statusImage = computed(() => {
       ?.filter((activity) => activity.type === 0)
       ?.pop() || {}
 
-  if (filtered.name === 'Spotify' && filtered.assets) {
+  if (filtered.name === 'Spotify' && filtered.assets?.large_image) {
     return `https://media.discordapp.net/external/${filtered.assets.large_image.substring(12)}`
   }
   if (filtered.name === 'VALORANT') {
@@ -129,15 +129,15 @@ const statusImage = computed(() => {
     return 'https://cdn.discordapp.com/app-assets/463097721130188830/513734690272968717.webp'
   }
   if (
-    filtered.name === 'YouTube Music' ||
-    (filtered.name === 'Visual Studio Code' && filtered.assets)
+    (filtered.name === 'YouTube Music' || filtered.name === 'Visual Studio Code') &&
+    filtered.assets?.large_image
   ) {
     return `https://media.discordapp.net/external/${filtered.assets.large_image.substring(12)}`
   }
   if (filtered.name === 'Prime Video') {
     return 'https://cdn.discordapp.com/app-assets/705139844883677224/705140011946737806.webp'
   }
-  if (filtered.name === 'Netflix' && filtered.assets) {
+  if (filtered.name === 'Netflix' && filtered.assets?.large_image) {
     return `https://media.discordapp.net/external/${filtered.assets.large_image.substring(12)}`
   }
   if (filtered.name === 'GitHub' && filtered.assets) {

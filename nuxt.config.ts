@@ -64,7 +64,7 @@ export default defineNuxtConfig({
     '@vite-pwa/nuxt',
   ],
 
-  css: ['~/stylesheets/root.scss'],
+  css: ['~/public/fonts/stylesheet.css', '~/stylesheets/root.scss'],
 
   colorMode: {
     classSuffix: '',
@@ -84,7 +84,7 @@ export default defineNuxtConfig({
   },
 
   gtag: {
-    id: 'G-XXXXXXXXXX',
+    id: process.env.NUXT_PUBLIC_GTAG_ID || 'G-XXXXXXXXXX',
   },
 
   site: {

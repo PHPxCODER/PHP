@@ -18,10 +18,12 @@
 </template>
 
 <script setup>
-const error = useError()
+const props = defineProps({
+  error: Object,
+})
 
 useHead({
-  title: `Error ${error.value?.statusCode}`,
+  title: `Error ${props.error?.statusCode}`,
 })
 
 const errors = {
@@ -50,13 +52,13 @@ const errors = {
 }
 
 const errorMeta = computed(() => ({
-  title: errors[error.value?.statusCode]?.title || 'Unknown',
+  title: errors[props.error?.statusCode]?.title || 'Unknown',
   description:
-    errors[error.value?.statusCode]?.description || 'No description.',
+    errors[props.error?.statusCode]?.description || 'No description.',
 }))
 
 onMounted(() => {
-  console.error(error.value)
+  console.error(props.error)
 })
 
 function refresh() {

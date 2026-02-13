@@ -52,6 +52,7 @@
 const props = defineProps({
   path: {
     type: String,
+    default: '',
   },
 })
 

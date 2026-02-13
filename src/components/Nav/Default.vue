@@ -46,6 +46,8 @@ const paths = [
   'recommends',
   'donate',
   'blog',
+  'utils',
+  'utils-metatag',
 ]
 
 const currentPath = computed(() => {
