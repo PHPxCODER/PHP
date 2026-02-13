@@ -37,7 +37,7 @@ const {
   data: repos,
   pending,
   error,
-} = await useFetch(
+} = useLazyFetch(
   'https://api.github.com/users/phpxcoder/repos?per_page=100',
   {
     server: false,
