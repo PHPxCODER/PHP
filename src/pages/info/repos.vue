@@ -38,7 +38,7 @@ const {
   pending,
   error,
 } = await useFetch(
-  'https://api.github.com/users/mehmetali345dev/repos?per_page=100',
+  'https://api.github.com/users/phpxcoder/repos?per_page=100',
   {
     server: false,
     transform: (data) =>
