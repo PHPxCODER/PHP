@@ -30,22 +30,23 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "nuxt": "^3.14",
-    "@nuxt/content": "^3.11",
     "@nuxt/image": "^1.8",
-    "@nuxtjs/tailwindcss": "^6.12",
     "@nuxtjs/color-mode": "^3.5",
     "@nuxtjs/google-fonts": "^3.2",
     "@nuxtjs/robots": "^4.1",
     "@nuxtjs/sitemap": "^6.1",
-    "nuxt-gtag": "^3.0",
+    "@nuxtjs/tailwindcss": "^6.12",
     "@vite-pwa/nuxt": "^0.10",
-    "floating-vue": "^5.2",
     "dayjs": "^1.11",
+    "floating-vue": "^5.2",
     "meta-fetcher": "^3.1.1",
-    "sass": "^1.80",
-    "prism-themes": "^1.9.0",
+    "nuxt": "^3.14",
+    "nuxt-gtag": "^3.0",
     "prettier": "^3.4",
+    "sass": "^1.80",
     "tailwindcss": "^3.4"
+  },
+  "overrides": {
+    "esbuild": "0.27.3"
   }
 }

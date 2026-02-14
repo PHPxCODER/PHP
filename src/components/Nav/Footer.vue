@@ -16,13 +16,5 @@
 </template>
 
 <script setup>
-const route = useRoute()
-
-const text = computed(() => {
-  if (!route.path.includes('blog')) {
-    return 'This Website is Open Source on Github'
-  } else {
-    return '404 Not Found'
-  }
-})
+const text = 'This Website is Open Source on Github'
 </script>

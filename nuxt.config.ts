@@ -56,7 +56,6 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
     '@nuxt/image',
-    '@nuxt/content',
     '@nuxtjs/robots',
     '@nuxtjs/sitemap',
     '@nuxtjs/google-fonts',
@@ -68,13 +67,6 @@ export default defineNuxtConfig({
 
   colorMode: {
     classSuffix: '',
-  },
-
-  content: {
-    documentDriven: false,
-    highlight: {
-      theme: 'github-dark',
-    },
   },
 
   googleFonts: {

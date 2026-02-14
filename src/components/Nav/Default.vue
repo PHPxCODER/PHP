@@ -22,12 +22,6 @@
             class="font-bold text-lg text-black dark:text-white"
             >Go back</NuxtLink
           >
-          <NuxtLink
-            v-if="route.params.slug"
-            to="/blog"
-            class="font-bold text-lg text-black dark:text-white"
-            >Geri dön</NuxtLink
-          >
           <Color />
         </div>
       </div>
@@ -45,7 +39,6 @@ const paths = [
   'dictionary',
   'recommends',
   'donate',
-  'blog',
   'utils',
   'utils-metatag',
 ]

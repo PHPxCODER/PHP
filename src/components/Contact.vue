@@ -18,14 +18,12 @@
       >
         <IconAt class="h-8 w-8" />
       </a>
-      <BlogGoTop v-if="route.path.includes('blog')" />
     </div>
   </div>
 </template>
 
 <script setup>
 const config = useRuntimeConfig()
-const route = useRoute()
 const isLoaded = ref(false)
 
 onMounted(() => {
