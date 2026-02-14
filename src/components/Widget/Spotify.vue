@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="!finished || !statusDetails || Object.keys(lanyard).length === 0"
-    class="bg-green-500 dark:bg-green-600 w-full h-full flex items-center animate-pulse p-4 rounded-md"
+    class="bg-emerald-500 dark:bg-emerald-600 w-full h-full flex items-center animate-pulse p-4 rounded-md"
   >
     <div class="w-16 h-16 rounded-md mr-4 bg-gray-900 outline-none" />
     <div class="flex flex-col justify-center space-y-2">
@@ -19,7 +19,7 @@
     class="h-full w-full"
   >
     <div
-      class="bg-green-500 dark:bg-green-600 h-full bg-opacity-30 flex p-4 items-center rounded-md"
+      class="bg-emerald-500 dark:bg-emerald-600 h-full bg-opacity-30 flex p-4 items-center rounded-md"
     >
       <a
         :href="statusLink"

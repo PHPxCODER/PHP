@@ -2,7 +2,7 @@
   <div
     class="flex min-h-screen flex-col items-center bg-gray-200 scrollbar text-black dark:bg-black dark:text-gray-50"
   >
-    <div class="bg-green-600 h-2 w-full" />
+    <div class="bg-emerald-600 h-2 w-full" />
 
     <NavDefault class="sticky top-0 z-40" />
 
@@ -12,6 +12,6 @@
       <slot />
     </div>
     <NavFooter />
-    <div class="bg-green-600 h-2 w-full" />
+    <div class="bg-emerald-600 h-2 w-full" />
   </div>
 </template>

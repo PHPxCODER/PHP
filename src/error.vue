@@ -8,7 +8,7 @@
         <h1 class="text-2xl font-bold">{{ error?.statusCode }}</h1>
         <h1 class="text-lg font-bold">{{ errorMeta.title }}</h1>
         <p>{{ errorMeta.description }}</p>
-        <button class="button bg-green-600" @click="refresh()">
+        <button class="button bg-emerald-600" @click="refresh()">
           Refresh Page
         </button>
         <NuxtLink class="button bg-red-600" to="/">Go Home</NuxtLink>

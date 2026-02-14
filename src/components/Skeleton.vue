@@ -84,7 +84,7 @@
       </div>
       <a
         target="_blank"
-        class="flex justify-center rounded-md gap-3 text-white bg-green-600 dark:bg-green-600 p-4 w-full"
+        class="flex justify-center rounded-md gap-3 text-white bg-emerald-600 dark:bg-emerald-600 p-4 w-full"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

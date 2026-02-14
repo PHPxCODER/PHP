@@ -85,7 +85,7 @@ const statusDetails = computed(() => {
 const discordStatus = computed(() => {
   switch (lanyard.value.discord_status) {
     case 'online':
-      return 'bg-green-500'
+      return 'bg-emerald-500'
     case 'idle':
       return 'bg-yellow-500'
     case 'dnd':

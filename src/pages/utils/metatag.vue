@@ -4,11 +4,11 @@
     <input
       type="text"
       placeholder="Enter an URL"
-      class="p-4 bg-gray-800 focus:outline-none rounded-md ring-2 placeholder-gray-400 dark:placeholder-gray-700 ring-green-600 bg-opacity-30"
+      class="p-4 bg-gray-800 focus:outline-none rounded-md ring-2 placeholder-gray-400 dark:placeholder-gray-700 ring-emerald-600 bg-opacity-30"
       v-model="url"
     />
     <button
-      class="focus:outline-none bg-green-600 p-2 w-full rounded-md font-bold text-2xl"
+      class="focus:outline-none bg-emerald-600 p-2 w-full rounded-md font-bold text-2xl"
       @click="fetchMeta"
     >
       Fetch
