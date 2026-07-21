@@ -57,14 +57,33 @@ const technologies = [
   'Digital Ocean',
 ]
 
-const age = ref((new Date() - new Date('2004/07/21')) / 31557600000)
+// Birthday math is anchored to IST (+05:30) so the age flips over at IST
+// midnight for every visitor, regardless of their local timezone. Age is
+// derived from the exact real span between the last and next IST birthday
+// (not an average year length), so it lands on a whole number precisely
+// at the anniversary instead of drifting by up to ~half a day.
+const BIRTH_YEAR = 2004
+const BIRTH_MONTH_DAY = '07-21'
+const IST_OFFSET_MS = 5.5 * 60 * 60 * 1000
 
-const calculateAge = computed(() => {
-  const currentDate = new Date()
-  const birthDate = new Date('2004/07/21')
-  const difference = currentDate - birthDate
-  return Math.floor(difference / 31557600000)
-})
+const istBirthdayInstant = (year) => new Date(`${year}-${BIRTH_MONTH_DAY}T00:00:00+05:30`)
+
+const computeAge = (now) => {
+  const istYear = new Date(now.getTime() + IST_OFFSET_MS).getUTCFullYear()
+  const birthdayThisYear = istBirthdayInstant(istYear)
+  const hasHadBirthdayThisYear = now >= birthdayThisYear
+  const lastBirthdayYear = hasHadBirthdayThisYear ? istYear : istYear - 1
+  const lastBirthday = hasHadBirthdayThisYear ? birthdayThisYear : istBirthdayInstant(lastBirthdayYear)
+  const nextBirthday = hasHadBirthdayThisYear ? istBirthdayInstant(istYear + 1) : birthdayThisYear
+
+  const integerAge = lastBirthdayYear - BIRTH_YEAR
+  const fraction = (now - lastBirthday) / (nextBirthday - lastBirthday)
+  return integerAge + fraction
+}
+
+const age = ref(computeAge(new Date()))
+
+const calculateAge = computed(() => Math.floor(age.value))
 
 const calculateAgeDecimals = computed(() => {
   return age.value
@@ -73,7 +92,7 @@ const calculateAgeDecimals = computed(() => {
 let ageInterval
 onMounted(() => {
   ageInterval = setInterval(() => {
-    age.value = (new Date() - new Date('2004/07/21')) / 31557600000
+    age.value = computeAge(new Date())
   }, 500)
 })
 
