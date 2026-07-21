@@ -19,26 +19,26 @@
     class="h-full w-full"
   >
     <div
-      class="bg-emerald-500 dark:bg-emerald-600 h-full bg-opacity-30 flex p-4 items-center rounded-md"
+      class="bg-emerald-500 dark:bg-emerald-600 h-full bg-opacity-30 flex p-4 items-center rounded-md min-w-0"
     >
       <a
         :href="statusLink"
         title="View Song on Spotify"
         target="_blank"
-        class="h-full items-center flex"
+        class="h-full items-center flex min-w-0 w-full"
       >
         <img
           class="w-20 h-20 rounded-md md:flex hidden mr-4 bg-gray-900 outline-none"
           alt
           :src="statusImage"
         />
-        <div class="flex flex-col space-y-1 justify-center">
-          <div class="text-sm font-bold leading-tight truncate">
+        <div class="flex flex-col space-y-1 justify-center min-w-0 flex-1">
+          <Marquee class="text-sm font-bold leading-tight">
             {{ statusDetails.details }}
-          </div>
-          <div class="text-sm leading-tight truncate">
+          </Marquee>
+          <Marquee class="text-sm leading-tight">
             {{ 'By ' + statusArtist }}
-          </div>
+          </Marquee>
           <div class="text-sm leading-tight truncate">
             {{ 'From ' + statusDetails.assets?.large_text }}
           </div>
